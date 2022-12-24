@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--映射文件配置 -->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace命名空间，作用：对sql进行分类化管理 -->
+<mapper namespace="com.kano.dao.IScDao">
+    <select id="addSc">
+        insert into
+        sc(stu_id, course_id)
+        value(#{sId}, #{cId})
+    </select>
+    <select id="showSc" resultType="com.kano.domain.Sc">
+        select *
+        from sc
+        where stu_id = (
+            select id
+            from student
+            where stu_no=#{stu_no}
+        )
+    </select>
+</mapper>

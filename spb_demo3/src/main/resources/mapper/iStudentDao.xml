@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--映射文件配置 -->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace命名空间，作用：对sql进行分类化管理 -->
+<mapper namespace="com.kano.dao.IStudentDao">
+    <select id="selectById" resultType="com.kano.domain.Student">
+        select *
+        from student
+        where id!=#{id}
+    </select>
+    <select id="updateStudent">
+        update student
+        set stu_no=#{stu_no}, stu_name=#{stu_name}, stu_sex=#{stu_sex}, stu_age=#{stu_age}, stu_dept=#{stu_dept}
+        where id=#{id}
+    </select>
+    <select id="selectId" resultType="com.kano.domain.Student">
+        select *
+        from student
+        where stu_no=#{stu_no}
+    </select>
+</mapper>
